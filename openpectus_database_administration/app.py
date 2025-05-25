@@ -93,7 +93,7 @@ def main():
 
     admin.mount_to(app)
     print(f"Serving frontend at http://{args.host}:{args.port}")
-    uvicorn.run(app, host=args.host, port=args.port, log_level=logging.WARNING)
+    uvicorn.run(app, host=args.host, port=args.port, log_level=logging.WARNING, forwarded_allow_ips="*", proxy_headers=True)
 
 
 if __name__ == "__main__":
