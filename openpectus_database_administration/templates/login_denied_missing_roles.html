@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block header %}{% endblock %}
+{% block sidebar %}{% endblock %}
+{% block content %}
+<div class="empty">
+    <div class="empty-header">Access Denied</div>
+    <p class="empty-title">User {{ initials }} is not assigned required roles.</p>
+    <p class="empty-subtitle text-muted">
+        {% if required_roles|length == 1 %}
+        Access requires that {{ initials }} is assigned to the role "{{ required_roles[0] }}".
+        {% elif required_roles|length > 1 %}
+        Access requires that {{ initials }} is assigned to one of the following roles: "{{ required_roles|join('", "') }}".
+        {% endif %}
+        <br />
+        {% if roles|length == 0 %}
+        {{ initials }} is not assigned to any roles.
+        {% elif roles|length == 1 %}
+        {{ initials }} is assigned to the following role "{{ roles[0] }}"."
+        {% elif roles|length > 1 %}
+        {{ initials }} is assigned to the following roles: "{{ roles|join('", "') }}".
+        {% endif %}
+    </p>
+    <div class="empty-action">
+        <div class="text-center mb-4">
+            <a href="{{ url_for(__name__ ~ ':login') }}?login=true" class="navbar-brand navbar-brand-autodark">
+                Click to log in via SSO again
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
