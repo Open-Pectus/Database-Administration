@@ -30,9 +30,9 @@ from openpectus_database_administration.auth_provider import AzureAuthProvider
 def get_arg_parser():
     parser = ArgumentParser("Start Database Administration")
     parser.add_argument("-host", "--host", required=False, default="127.0.0.1",
-                        help="Host address to bind frontend and WebSocket to. Default: 127.0.0.1")
+                        help="Host address to bind to. Default: 127.0.0.1")
     parser.add_argument("-p", "--port", required=False, type=int, default=4200,
-                        help="Host port to bind frontend and WebSocket to. Default: 4200")
+                        help="Host port to bind to. Default: 4200")
     parser.add_argument("-db", "--database", required=True, type=str,
                         help="Path to Sqlite3 database.")
     return parser
